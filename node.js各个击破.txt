@@ -1,0 +1,23 @@
+
+-----------------------开发---------------------------
+1.框架：express, socket.io, restify, cleaver, stylus, browserify
+
+2.模板引擎：ejs, jade
+
+3.工具包：underscore, moment, connect, later, log4js, passport, passport(oAuth), reap, commander, retry
+
+4.数据库：mysql, mongoose, redis
+
+-----------------------优化----------------------------
+
+1.异步控制：async, wind
+
+2.部署：forever, pm2
+
+3.测试：jasmine, karma
+
+
+-----------------------管理----------------------------
+1.项目管理：npm, grunt, bower, yeoman
+
+2.跨平台：rio, tty
