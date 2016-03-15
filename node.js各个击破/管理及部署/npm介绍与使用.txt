@@ -1,0 +1,7 @@
+1.介绍
+
+npm的全程是Node Package Manager, 它是node.js的包管理器，
+
+github地址：https://github.com/npm/npm
+
+2.安装
