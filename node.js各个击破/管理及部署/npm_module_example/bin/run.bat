@@ -1,0 +1,1 @@
+node.exe bin/run %1

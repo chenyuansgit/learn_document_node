@@ -1,7 +1,68 @@
 1.介绍
 
-npm的全程是Node Package Manager, 它是node.js的包管理器，
+在实际项目中，用node实现的功能越多，代码越复杂,这时需要将代码形成单独的模块来管理，
+而npm则是node.js的包管理和分发工具.
 
 github地址：https://github.com/npm/npm
 
 2.安装
+新版本的NodeJS已经集成了npm, 安装好NodeJS后会自带npm.
+
+查看版本：npm -v
+版本升级：npm install npm -g
+
+3.基本命令
+
+	3.1 查看
+	npm search <module_name> 搜索模块
+	npm view   <module_name> 查看包中的package.json文件
+	npm list 查看当前路径下安装的所有包
+
+	3.2 使用npm安装模块
+	全局安装：npm install <module_name> -g
+	本地安装：npm install <module_name>
+
+	3.3卸载模块
+	npm uninstall <module_name>     在当前目录卸载指定模块
+	npm uninstall <module_name> -g  在全局目录卸载指定模块
+
+	3.4更新模块
+	npm update <module_name>
+
+4.自定义模块
+	4.0 初始化包结构
+
+	bin目录: 用于存放二进制文件的目录
+	bin/module_name文件: Linux命令行可执行文件
+	bin/module_name.bat文件: Win命令行可执行文件
+
+	test目录: 用于存放单元测试的目录
+	test/data目录: 用于存放测试数据的目录
+	test/data/sample.txt: 测试数据文件
+
+	lib目录：存放核心功能代码的目录
+	lib/index.js文件: 代码文件
+	lib/example.js文件: 例子代码文件
+
+	doc目录:存放文档的目录
+
+	package.json文件: 项目描述及依赖文件
+	README.md文件: 项目说明文件
+
+
+	4.1 生成package.json文件: 
+	进入包文件夹
+	npm init
+    
+    4.2 本地安装新创建的包
+    npm install <package> : package出现在node_modules路径下
+
+	4.2 注册用户
+	npm adduser ： (用户名：** 密码：***)
+
+	4.3 发布模块
+	npm publish
+
+	4.4 查看自己的发布包：
+	在https://npmjs.org/查询自己的package名称
+	

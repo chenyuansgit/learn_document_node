@@ -1,0 +1,11 @@
+{
+  "name": "npm_module_example",
+  "version": "1.0.0",
+  "description": "this is my first test to publish the package",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenyuan",
+  "license": "MIT"
+}
