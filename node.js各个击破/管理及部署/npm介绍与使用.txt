@@ -54,15 +54,15 @@ github地址：https://github.com/npm/npm
 	进入包文件夹
 	npm init
     
-    4.2 本地安装新创建的包
-    npm install <package> : package出现在node_modules路径下
+    	4.2 本地安装新创建的包
+    	npm install <package> : package出现在node_modules路径下
 
-	4.2 注册用户
+	4.3 注册用户
 	npm adduser ： (用户名：** 密码：***)
 
-	4.3 发布模块
+	4.4 发布模块
 	npm publish
 
-	4.4 查看自己的发布包：
-	在https://npmjs.org/查询自己的package名称
+	4.5 查看自己的发布包：
+	在https://npmjs.org/ 查询自己的package名称
 	
