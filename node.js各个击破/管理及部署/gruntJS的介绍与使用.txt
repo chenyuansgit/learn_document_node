@@ -93,9 +93,9 @@ module.exports = function(grunt) {
 var sayHello = function(name){
 	return "Hello " + name;
 }
-6.创建process_name/src/a.js、b.js 文件 ： 要合并的源文件
+7.创建process_name/src/a.js、b.js 文件 ： 要合并的源文件
 
-7.编写process_name/test/qunit.html文件： 用于单元测试的文件
+8.编写process_name/test/qunit.html文件： 用于单元测试的文件
 <!DOCTYPE HTML5>
 <html>
 <head>
@@ -116,8 +116,8 @@ ok(true, "world");
 </body>
 </html>
 
-7.创建process_name/build/ 目录 ：存放结果文件的目录
+9.创建process_name/build/ 目录 ：存放结果文件的目录
 
-8.执行grunt
+10.执行grunt
 grunt  执行所有定义的任务
 grunt concat 执行合并任务
