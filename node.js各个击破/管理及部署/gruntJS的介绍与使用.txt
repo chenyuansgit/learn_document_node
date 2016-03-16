@@ -1,0 +1,123 @@
+1.介绍
+
+当一个HTML页面引用多个JS文件时，每读取一个文件，浏览器都会向web服务器发送一个
+加载请求，这样会造成很多时间消耗。我们一般将本地所用到的JS文件进行压缩和合并，
+从而使加载速度更快。grunt就是一个压缩、合并、编译、单元测试代码的自动化工具。
+
+github地址：https://github.com/gruntjs/grunt
+
+2.安装
+
+安装 CLI：npm install -g grunt-cli  可在项目的任意子目录中运行grunt
+安装脚手架：npm install -g grunt-init 
+
+
+3.准备process_name/package.json文件 ：项目配置文件
+{
+  "name": "process_name,  项目名
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.5.0" , //压缩JS代码
+    "grunt-contrib-concat": "~0.3.0", //合并JS文件
+    "grunt-contrib-jshint": "~0.10.0", //代码检查
+    "grunt-contrib-nodeunit": "~0.4.1", //单元测试
+    "grunt-contrib-watch": "~0.5.2" //监控文件修改并重新执行注册的任务
+  }
+}
+
+4.安装项目依赖的模块
+npm install
+
+5.准备process_name/Gruntfile.js文件 ：配置grunt任务
+
+module.exports = function(grunt) {
+
+  // 项目配置
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    
+    uglify: { // 压缩
+      options: {
+        // 用于在文件顶部生成一个注释
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      build: {
+      	// 源文件
+        src: 'src/<%= pkg.name %>.js',
+        // 目标文件
+        dest: 'build/<%= pkg.name %>.min.js'
+      }
+    },
+
+    concat: { // 合并
+   		bar: {
+      	  src: ['src/a*.js', 'src/b*.js'],
+      	  dest: 'build/<%= pkg.name %>.cat.js',
+        }，
+  	}，
+
+  	jshint: { // 代码检查
+        files: ['gruntfile.js', 'src/*.js', 'build/*.js'],
+        options: {
+            globals: {
+                exports: true
+            }
+        }
+    },
+
+    qunit: { // 单元测试
+      files: ['test/*.html']
+    },
+
+     watch: { // 监控文件
+        files: ['<%= jshint.files %>'],
+        tasks: ['jshint', 'qunit']
+    }
+
+
+  // 加载任务插件
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  // 默认执行的任务列表
+  grunt.registerTask('default', ['uglify','concat','jshint','qunit','watch']);
+
+};
+
+6.创建process_name/src/process_name.js 文件 ： 要压缩的源文件
+
+var sayHello = function(name){
+	return "Hello " + name;
+}
+6.创建process_name/src/a.js、b.js 文件 ： 要合并的源文件
+
+7.编写process_name/test/qunit.html文件： 用于单元测试的文件
+<!DOCTYPE HTML5>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+<script>
+test("hello", function() {
+ok(true, "world");
+});
+</script>
+</head>
+<body>
+<h1 id="qunit-header">QUnit example</h1>
+<h2 id="qunit-banner"></h2>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+</body>
+</html>
+
+7.创建process_name/build/ 目录 ：存放结果文件的目录
+
+8.执行grunt
+grunt  执行所有定义的任务
+grunt concat 执行合并任务
