@@ -1,0 +1,68 @@
+1.介绍
+
+Bower是一款包管理工具，基于nodejs的模块化思想，把功能分散到各个模块中，让模块和
+模块之间存在联系，让Bower来管理模块间的这种联系.
+├─┬ bootstrap#3.0.0-rc1 extraneous
+│ └── jquery#2.0.3
+└── jquery#2.0.3
+
+github地址：https://github.com/bower/bower
+
+2.安装 
+
+npm install bower -g  依赖于git
+
+3.使用
+
+安装模块 bower install xxx
+安装指定版本的模块 bower install xxx#0.0.0
+
+升级已安装好的模块 bower update xxx
+
+查看项目中导入的模块 bower list
+
+删除项目中导入的模块 bower uninstall xxx
+
+查看模块信息 bower info xxx
+
+查看模块的url bower lookup xxx
+
+用浏览器打开模块发布页 bower home xxx
+
+查询包含xxx的模块 bower search xxx
+
+4.发布自己的依赖包
+
+4.1 创建模块目录 nodejs-bower
+
+4.2 安装需要依赖的包 bower install xxx
+
+4.3 生成配置文件bower.json : bower init
+{
+  "name": "nodejs-bower",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "git://github.com/components/jquery.git#~2.0.3"
+  }
+}
+
+4.4 上传该模块到github仓库：nodejs-bower
+
+4.5 注册到bower官方类库
+bower register <nodejs-bower> git@github.com:bsspirit/nodejs-bower.git
+
+4.6 查询上传的包 bower search <nodejs-bower>
+
+4.7 安装包 bower install <nodejs-bower>
+
+nodejs-bower#af3ceaac07 bower_components\nodejs-bower
+|
+└── jquery#2.0.3
+

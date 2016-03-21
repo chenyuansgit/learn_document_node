@@ -1,0 +1,36 @@
+1.介绍
+
+pm2是一个简单的命令式nodejs的守护进程， 主要功能有：
+
+启动，停止，重启App应用
+创建node的子进程
+通过monitor监控node子进程的运行情况
+文件更新，或者进程挂掉，forever会自动重启node服务器
+
+github地址：https://github.com/nodejitsu/forever/
+
+2.安装
+
+npm install -g forever
+
+3.使用
+forever start app.js #启动一个进程
+forever list #查看服务器状态
+forever stop app.js #停止服务器
+
+4.启动配置
+
+4.1开发环境
+>> cd /home/conan/nodejs/nodejs-forever/
+>> forever -p . -l ./logs/access.log -e ./logs/error.log -a -w start app.js
+
+4.2生产环境
+>> export LOG=/var/log/nodejs/project
+>> export PID=/var/log/nodejs/project/forever.pid
+>> export APP_PATH=/home/conan/nodejs/nodejs-forever
+>> export APP=$APP_PATH/app.js
+
+>> forever -p $APP_PATH -l $LOG/access.log -e $LOG/error.log -o $LOG/out.log -a --pidFile $PID start $APP
+
+
+

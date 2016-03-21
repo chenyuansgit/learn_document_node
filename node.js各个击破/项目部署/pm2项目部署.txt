@@ -1,0 +1,35 @@
+1.介绍
+
+pm2是一个带有负载均衡功能的node进程管理器, 主要功能有：
+
+内建负载均衡（使用Node cluster 集群模块）
+后台运行
+0秒停机重载，我理解大概意思是维护升级的时候不需要停机.
+具有Ubuntu和CentOS 的启动脚本
+停止不稳定的进程（避免无限循环）
+控制台检测
+提供 HTTP API
+远程控制和实时的接口API ( Nodejs 模块,允许和PM2进程管理器交互 )
+
+
+github地址：https://github.com/Unitech/pm2/
+
+2.安装
+npm install -g pm2
+
+3.使用
+pm2 start app.js -i max         #根据有效CPU数目启动最大进程数目
+pm2 start app.js --name my-api  #启动一个进程并为进程命名
+pm2 list   #显示所有进程状态
+pm2 monit              # 监视所有进程
+pm2 logs               #  显示所有进程日志
+pm2 stop all           # 停止所有进程
+pm2 stop n             # 停止指定的进程
+pm2 delete all         # 杀死全部进程
+pm2 restart all        # 重启所有进程
+pm2 restart n          # 重启指定的进程
+pm2 reload all         # 0秒停机重载进程 (用于 NETWORKED 进程)
+
+#监控所有被PM2管理的进程,并监控运行这些进程的机器的状态
+pm2 web 
+浏览器访问：http://localhost:9615
