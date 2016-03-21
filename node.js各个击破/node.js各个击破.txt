@@ -5,8 +5,9 @@
 2.模板引擎：ejs, jade
 
 3.工具包：underscore, moment, connect, later, log4js, passport, passport(oAuth), reap, commander, retry
+		  request, co, phpjs
 
-4.数据库：mysql, mongoose, redis
+4.数据库：mysql, mongoose, redis, sqlite3
 
 -----------------------优化----------------------------
 
@@ -15,6 +16,8 @@
 2.部署：forever, pm2
 
 3.测试：jasmine, karma
+
+4.算法库： lodash
 
 
 -----------------------管理----------------------------
