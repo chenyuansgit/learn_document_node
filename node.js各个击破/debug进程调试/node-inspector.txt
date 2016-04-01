@@ -1,0 +1,49 @@
+1. 简介
+ 
+ node-inspector 可用来远程调试node.js代码
+
+2. 安装
+
+ npm install -g node-inspector
+
+3.一般调试
+
+3.1 启动要调试的程序
+
+node --debug-brk=8888 test.js 运行代码时暂停在第一行
+node --debug=8888 test.js  (端口是调试端口)
+
+3.2 启动node-inspector
+
+node-inspector -web-port=8080 (端口是web访问端口)
+
+3.3 打开chrome浏览器
+
+http://localhost:8080/debug?port=8888
+
+4. 子进程调试
+
+4.1 在创建子进程时添加属性，表明调试端口
+
+//法一： parent.js
+var parms={ execArgv: [ '--debug-brk=9999' ]};
+var cp = require('child_process');
+cp.fork("./sub.js", parms);
+
+//法二： parent.js 
+var cp = require('child_process');
+cp.spawn('/usr/local/bin/node', [ '--debug-brk=9999','./sub.js']);
+
+// sub.js
+console.log(process.argv);
+var a = 2;
+b = a+1;
+console.log(b);
+
+4.2 启动父进程程序
+node parent.js
+
+4.3 启动node-inspector(同上)
+4.4 打开chrome浏览器进行调试(同上)
+
+
